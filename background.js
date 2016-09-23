@@ -50,7 +50,6 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
             jsFiles = [
                 'jquery.js',
                 'keymaster.js',
-                'fuzzy.js',
                 'tab-switcher.js'
             ];
 
