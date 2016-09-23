@@ -13,6 +13,7 @@ $(document).ready(function () {
         ESCAPE_KEY    = 27,
         ENTER_KEY     = 13,
         SEMICOLON_KEY = 186,
+        allTabs       = [],
         HOLDER_IMG    = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAMklEQVR4AWMgEkT9R4INWBUgKX0Q1YBXQYQCkhKEMDILogSnAhhEV4AGRqoCTEhkPAMAbO9DU+cdCDkAAAAASUVORK5CYII=',
         MASTER_KEY    = '⌘+⇧+k, ⌃+⇧+k',
         TAB_TEMPLATE  = '<li data-tab-id="{id}" data-window-id="{windowId}" class="tab-item">' +
@@ -95,9 +96,30 @@ $(document).ready(function () {
             }
         });
 
+        $(document).on('keyup', TAB_SWITCHER + ' input', function (e) {
+
+            var keyCode = e.keyCode,
+                goingUp        = (keyCode === UP_KEY),
+                goingDown      = (keyCode === DOWN_KEY),
+                escaping       = (keyCode === ESCAPE_KEY),
+                switchingTab   = (keyCode === ENTER_KEY),
+                closingTab     = (keyCode === SEMICOLON_KEY);
+
+            if (!goingUp && !goingDown && !escaping && !switchingTab && !closingTab) {
+                var keywords = $(this).val();
+
+                if ($.trim(keywords) !== '') {
+                    filterTabs(keywords);
+                } else {
+                    populateTabs(allTabs);
+                }
+            }
+
+        });
+
         key(MASTER_KEY, function () {
             $(TAB_SWITCHER).show().find('input').focus();
-            populateTabs();
+            fetchTabs();
         });
     }
 
@@ -119,15 +141,42 @@ $(document).ready(function () {
         return tabsHtml;
     }
 
-    function populateTabs() {
+    function fetchTabs() {
         chrome.extension.sendMessage({ type: 'getTabs' }, function(tabs) {
             if (!tabs) {
                 return false;
             }
 
-            var tabsHtml = getTabsHtml(tabs);
-            $('.tabs-list').html(tabsHtml);
+            // Cache the tabs, this is the list, we will be filtering
+            allTabs = tabs;
+
+            populateTabs(tabs);
         });
+    }
+
+    function filterTabs(keywords) {
+
+        keywords = keywords.toLowerCase();
+
+        var matches   = [],
+            tempTitle = '',
+            tempUrl   = '';
+
+        allTabs.map(function (tab) {
+            tempTitle = tab.title.toLowerCase();
+            tempUrl   = tab.url.toLowerCase();
+
+            if (tempTitle.match(keywords) || tempUrl.match(keywords)) {
+                matches.push(tab);
+            }
+        });
+
+        populateTabs(matches);
+    }
+
+    function populateTabs(tabs) {
+        var tabsHtml = getTabsHtml(tabs);
+        $('.tabs-list').html(tabsHtml);
     }
 
     function switchToTab(tabId, windowId) {
