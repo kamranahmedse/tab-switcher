@@ -45,7 +45,7 @@
     overflow: scroll;
 }
 
-.tab-switcher ul.tabs-list li.selected-tab {
+.tab-switcher ul.tabs-list li.selected-tab, .tab-switcher ul.tabs-list li:hover {
     background-color: #DFDFDF;
 }
 

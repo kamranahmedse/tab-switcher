@@ -33,6 +33,16 @@ $(document).ready(function () {
     function bindUI() {
         var $tabSwitcher = $(TAB_SWITCHER);
 
+        // mouse-down instead of click because click gets triggered after the blur event in which case tab
+        // switcher would already be hidden (@see blur event below) and click will not be performed
+        $(document).on('mousedown', TAB_SWITCHER + ' .tab-item', function () {
+            var $this = $(this),
+                tabId = $this.data('tabId'),
+                windowId = $this.data('windowId');
+
+            switchToTab(tabId, windowId);
+        });
+
         $(document).on('blur', TAB_SWITCHER, function () {
             $tabSwitcher.hide();
             $tabSwitcher.find('input').val('');
