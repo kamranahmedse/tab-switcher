@@ -46,7 +46,7 @@ $(document).ready(function () {
                 escaping       = (keyCode === ESCAPE_KEY),
                 switchingTab   = (keyCode === ENTER_KEY),
                 closingTab     = (keyCode === SEMICOLON_KEY),
-                $firstSelected = $tabSwitcher.find('.tab-item.selected').first();
+                $firstSelected = $tabSwitcher.find('.tab-item.selected-tab').first();
 
             // Switcher was visible and either down or up key was pressed
             if ($tabSwitcher.is(':visible')) {
@@ -57,9 +57,9 @@ $(document).ready(function () {
                         $nextSelected;
 
                     if ($firstSelected.length === 0) {
-                        $nextSelected = $firstTab.addClass('selected');
+                        $nextSelected = $firstTab.addClass('selected-tab');
                     } else {
-                        $firstSelected.removeClass('selected');
+                        $firstSelected.removeClass('selected-tab');
 
                         var $nextTab = $firstSelected.next('.tab-item'),
                             $prevTab = $firstSelected.prev('.tab-item');
@@ -67,16 +67,16 @@ $(document).ready(function () {
                         if (goingDown) {
 
                             if ($nextTab.length !== 0) {
-                                $nextSelected = $nextTab.addClass('selected');
+                                $nextSelected = $nextTab.addClass('selected-tab');
                             } else {
-                                $nextSelected = $firstTab.addClass('selected');
+                                $nextSelected = $firstTab.addClass('selected-tab');
                             }
 
                         } else if (goingUp) {
                             if ($prevTab.length !== 0) {
-                                $nextSelected = $prevTab.addClass('selected');
+                                $nextSelected = $prevTab.addClass('selected-tab');
                             } else {
-                                $nextSelected = $lastTab.addClass('selected');
+                                $nextSelected = $lastTab.addClass('selected-tab');
                             }
                         }
                     }
@@ -177,7 +177,7 @@ $(document).ready(function () {
     function populateTabs(tabs) {
         var tabsHtml = getTabsHtml(tabs);
         $('.tabs-list').html(tabsHtml);
-        $('.tabs-list').find('li').first().addClass('selected');
+        $('.tabs-list').find('li').first().addClass('selected-tab');
     }
 
     function switchToTab(tabId, windowId) {
