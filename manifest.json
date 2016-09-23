@@ -1,0 +1,23 @@
+{
+  "name": "Tabswitcher",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "author": "Kamran Ahmed",
+  "description": "Switch between tabs with ease",
+  "homepage_url": "https://github.com/kamranahmedse/tab-switcher",
+  "icons": {
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  }
+}
