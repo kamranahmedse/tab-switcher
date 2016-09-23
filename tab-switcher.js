@@ -177,6 +177,7 @@ $(document).ready(function () {
     function populateTabs(tabs) {
         var tabsHtml = getTabsHtml(tabs);
         $('.tabs-list').html(tabsHtml);
+        $('.tabs-list').find('li').first().addClass('selected');
     }
 
     function switchToTab(tabId, windowId) {
