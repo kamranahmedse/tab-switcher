@@ -1,8 +1,14 @@
 'use strict';
 
 chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
+
     var handler = {
 
+        /**
+         * Gets all the opened tabs
+         *
+         * @returns {boolean}
+         */
         getTabs: function () {
             chrome.tabs.query({}, function (tabs) {
                 sendResponse(tabs);
@@ -11,6 +17,12 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
             return true;
         },
 
+        /**
+         * Switches the browser tab to the one with required tabId
+         *
+         * @param params
+         * @returns {boolean}
+         */
         switchTab: function (params) {
             chrome.tabs.update(params.tabId, {active: true}, function () {
                 chrome.windows.update(params.windowId, {focused: true});
@@ -19,15 +31,21 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
             return true;
         },
 
+        /**
+         * Closes the tab with passed tabId
+         *
+         * @param params
+         * @returns {boolean}
+         */
         closeTab: function (params) {
-
             chrome.tabs.remove(params.tabId);
-
             return true;
         }
+
     };
 
     return handler[req.type](req.params);
+
 });
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
@@ -35,6 +53,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     if (changeInfo.status !== 'loading')
         return;
 
+    // Inject the required assets
     chrome.tabs.executeScript(tabId, {
         code: 'var injected = window.tabSwitcherInjected; window.tabSwitcherInjected = true; injected;',
         runAt: 'document_start'
@@ -45,11 +64,11 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
             return;
 
         var cssFiles = [
-                'tab-switcher.css'
+                'assets/css/tab-switcher.css'
             ],
             jsFiles = [
-                'jquery.js',
-                'keymaster.js',
+                'assets/lib/jquery.js',
+                'assets/lib/keymaster.js',
                 'tab-switcher.js'
             ];
 
