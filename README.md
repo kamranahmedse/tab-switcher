@@ -31,6 +31,10 @@ Follow the instructions below
 - Use `Enter` key or mouse click to jump to tab
 - Press `;` semicolon key to close the selected tab
 
+## Note
+
+- After installing, you will have to refresh the already opened tabs
+- Chrome doesn't allow it on the `New Tab` or `Chrome Web Store` pages
 
 ## Roadmap
 
