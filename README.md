@@ -3,7 +3,7 @@
     <img width="600" src="http://i.imgur.com/2EVTmo1.png" text-align="center">
 </p>
 
-> Switch between the opened tabs in a flash
+> Switch between the opened tabs in the blink of an eye
 
 ## Preface
 
@@ -38,15 +38,15 @@ Follow the instructions below
 
 ## Roadmap
 
-[x] Activation by shortcut
-[x] Fuzzy search for tabs
-[x] Closing tabs
-[x] Switching tab
-[] Pin/Unpin selected tab using shortcut
-[] Save current session/selective tabs with name e.g. type `>save Session Name` to save current session and then `>sessions` to list all the sessions and restore any sessions 
-[] Options page, themes and modify shortcuts
-[] Tweet any tab using shortcut
-[] Use ES6 with babel
+- [x] Activation by shortcut
+- [x] Fuzzy search for tabs
+- [x] Closing tabs
+- [x] Switching tab
+- [] Pin/Unpin selected tab using shortcut
+- [] Save current session/selective tabs with name e.g. type `>save Session Name` to save current session and then `>sessions` to list all the sessions and restore any sessions 
+- [] Options page, themes and modify shortcuts
+- [] Tweet any tab using shortcut
+- [] Use ES6 with babel
 
 ## Contribution
 
