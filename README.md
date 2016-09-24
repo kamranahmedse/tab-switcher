@@ -26,11 +26,9 @@ No setup required. [Install it directly from the Chrome Webstore]()
 - Type the keywords to filter
 - Use `Enter` key or use mouse click to jump to tab
 
-![Use command+shift+k or ctrl+shift+k]()
+![Use command+shift+k or ctrl+shift+k](http://i.imgur.com/o9UBZEv.png)
 
 - Press `;` semicolon key to close the selected tab
-
-![Use semicolon to close tab]()
 
 
 ## Roadmap
