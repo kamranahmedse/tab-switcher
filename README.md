@@ -7,7 +7,7 @@
 
 ## Preface
 
-While you are working on something, number of opened tabs can quickly grow out of hand and when that happens trying to find the relevant tab can easily waste a few seconds of your time; and without any doubt every second that harms your productivity counts. TabSwitcher tries to fix this by letting you
+While you are working on something, number of opened tabs can quickly grow out of hand and when that happens trying to find the relevant tab can easily waste a few seconds of your time; and without any doubt every second that harms your productivity counts. TabSwitcher tries to fix this.
 
 ## Features 
 
@@ -18,16 +18,17 @@ While you are working on something, number of opened tabs can quickly grow out o
  
 ## Installation
 
-No setup required. [Install it directly from the Chrome Webstore]()
+No setup required. [Install it directly from the Chrome Webstore](https://chrome.google.com/webstore/detail/dnnmaaanhggngdohooaogfcnokngjcbc)
 
 ## Usage
 
-- Press **COMMAND+SHIFT+K** or **CTRL+SHIFT+K** to activate
-- Type the keywords to filter
-- Use `Enter` key or use mouse click to jump to tab
+Follow the instructions below
+
+- Press **COMMAND+SHIFT+K** or **CTRL+SHIFT+K** to activate and start typing the keywords to filter tabs
 
 ![Use command+shift+k or ctrl+shift+k](http://i.imgur.com/o9UBZEv.png)
 
+- Use `Enter` key or mouse click to jump to tab
 - Press `;` semicolon key to close the selected tab
 
 
