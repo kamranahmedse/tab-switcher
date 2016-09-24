@@ -9,7 +9,7 @@
 
 While you are working on something, number of opened tabs can quickly grow out of hand and when that happens trying to find the relevant tab can easily waste a few seconds of your time; and without any doubt every second that harms your productivity counts. TabSwitcher tries to fix this.
 
-## Features 
+## Features
 
 - Apply fuzzy filter over the opened tabs 
 - Swiftly switch between the tabs
