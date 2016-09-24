@@ -3,7 +3,7 @@
     <img width="600" src="http://i.imgur.com/2EVTmo1.png" text-align="center">
 </p>
 
-> Swiftly switch between the opened tabs
+> Switch between the opened tabs in a flash
 
 ## Preface
 
@@ -22,17 +22,35 @@ No setup required. [Install it directly from the Chrome Webstore]()
 
 ## Usage
 
-- Use one of the following shortcuts to activate the extension
-    - *COMMAND + SHIFT + K* *⌘+⇧+k*
-    - *CTRL + SHIFT + K*
-
+- Press **COMMAND+SHIFT+K** or **CTRL+SHIFT+K** to activate
 - Type the keywords to filter
 - Use `Enter` key or use mouse click to jump to tab
-- Use `;` semicolon key to close the selected tab
+
+![Use command+shift+k or ctrl+shift+k]()
+
+- Press `;` semicolon key to close the selected tab
+
+![Use semicolon to close tab]()
+
+
+## Roadmap
+
+[x] Activation by shortcut
+[x] Fuzzy search for tabs
+[x] Closing tabs
+[x] Switching tab
+[] Save current session/selective tabs with name e.g. type `>save Session Name` to save current session and then `>sessions` to list all the sessions and restore any sessions 
+[] Options page, themes and modify shortcuts
+[] Pin/Unpin selected tab using shortcut
+[] Tweet any tab using shortcut
+[] Use ES6 with babel
 
 ## Contribution
 
-Feel free to fork, enhance, lock issues or spread the word
+- Fork, enhance, create PR
+- Lock issues with any bugs or feature requests
+- Implement something from the roadmap
+- Spread the word
  
 ## License
 
