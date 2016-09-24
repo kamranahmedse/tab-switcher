@@ -28,14 +28,16 @@
                         '</div>',
 
         TAB_TEMPLATE  : '<li data-tab-id="{id}" data-window-id="{windowId}" class="tab-item">' +
-                            '<img class="favicon-img left" src="{favicon}" onerror="this.src=\'{default_favicon}\';">' +
-                            '<span>{title}</span>' +
+                            '<span class="favicon-img">' +
+                            '<img src="{favicon}" onerror="this.src=\'{default_favicon}\';">' +
+                            '</span>' +
+                            '<span class="title">{title}</span>' +
                         '</li>',
 
         // References to DOM elements
         SELECTED_CLASS: 'selected-tab',
         TAB_SELECTED  : '.selected-tab',
-        FAVICON_IMG   : '.favicon-img',
+        FAVICON_IMG   : '.favicon-img img',
         TAB_SWITCHER  : '.tab-switcher',
         TAB_LIST      : '.tab-switcher .tabs-list',
         TAB_ITEM      : '.tab-item',
