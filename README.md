@@ -3,7 +3,7 @@
     <img width="600" src="http://i.imgur.com/2EVTmo1.png" text-align="center">
 </p>
 
-> Switch between the opened tabs in the blink of an eye. [Demo](http://i.imgur.com/Soqu41O.gifv)
+> Switch between the opened tabs in the blink of an eye. [Check Demo](http://i.imgur.com/Soqu41O.gifv)
 
 ## Preface
 
@@ -42,6 +42,7 @@ Follow the instructions below
 - [x] Fuzzy search for tabs
 - [x] Closing tabs
 - [x] Switching tab
+- [ ] Close filtered tabs
 - [ ] Pin/Unpin selected tab using shortcut
 - [ ] Save current session/selective tabs with name e.g. type `>save Session Name` to save current session and then `>sessions` to list all the sessions and restore any sessions 
 - [ ] Options page, themes and modify shortcuts
