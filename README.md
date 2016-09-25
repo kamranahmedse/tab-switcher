@@ -42,12 +42,12 @@ Follow the instructions below
 - [x] Fuzzy search for tabs
 - [x] Closing tabs
 - [x] Switching tab
+- [ ] Ditch jQuery, use plain Javascript plus ES6 with babel
 - [ ] Close filtered tabs
 - [ ] Pin/Unpin selected tab using shortcut
 - [ ] Save current session/selective tabs with name e.g. type `>save Session Name` to save current session and then `>sessions` to list all the sessions and restore any sessions 
 - [ ] Options page, themes and modify shortcuts
 - [ ] Tweet any tab using shortcut
-- [ ] Use ES6 with babel
 
 ## Contribution
 
