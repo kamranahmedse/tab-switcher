@@ -7,9 +7,6 @@
   top: 10vh;
   left: 20vw;
   width: 60vw;
-  max-height: 80vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
   display: block;
   padding: 0;
   color: #666;
@@ -49,6 +46,9 @@
   margin: 0;
   padding: 0;
   border-right: 1px solid transparent;
+  max-height: 80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .tab-switcher ul.tabs-list li.selected-tab, .tab-switcher ul.tabs-list li:hover {
