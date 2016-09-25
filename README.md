@@ -31,6 +31,8 @@ Follow the instructions below
 - Use `Enter` key or mouse click to jump to tab
 - Press `;` semicolon key to close the selected tab
 
+![Usage ](http://i.imgur.com/Soqu41O.gif)
+
 ## Note
 
 - After installing, you will have to refresh the already opened tabs
