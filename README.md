@@ -3,7 +3,7 @@
     <img width="600" src="http://i.imgur.com/2EVTmo1.png" text-align="center">
 </p>
 
-> Switch between the opened tabs in the blink of an eye
+> Switch between the opened tabs in the blink of an eye. [Demo](http://i.imgur.com/Soqu41O.gifv)
 
 ## Preface
 
@@ -30,8 +30,6 @@ Follow the instructions below
 
 - Use `Enter` key or mouse click to jump to tab
 - Press `;` semicolon key to close the selected tab
-
-![Usage ](http://i.imgur.com/Soqu41O.gif)
 
 ## Note
 
