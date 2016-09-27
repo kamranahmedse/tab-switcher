@@ -309,6 +309,12 @@
             populateTabs(matches);
         }
 
+        /**
+         * Appends the tab switcher HTML to the $container
+         *
+         * @param $container
+         * @returns {*}
+         */
         function appendTabSwitcherHtml($container) {
             if (!($container instanceof jQuery)) {
                 $container = $($container);
@@ -316,6 +322,22 @@
 
             $container.append(Config.MAIN_TEMPLATE);
             return $container;
+        }
+
+        /**
+         * Gets the tab switcher element and makes it visible. If it cannot find the element creates it.
+         */
+        function showTabSwitcher() {
+            var $tabSwitcher = $(Config.TAB_SWITCHER);
+
+            // Some pages remove the tab switcher HTML by chance
+            // so we check if the tab switcher was found and we re append if it is not found
+            if ($tabSwitcher.length === 0) {
+                appendTabSwitcherHtml(Config.TAB_SWITCHER_CONTAINER);
+                $tabSwitcher = $(Config.TAB_SWITCHER);
+            }
+
+            $tabSwitcher.show();
         }
 
         return {
@@ -380,19 +402,6 @@
                             }
                     }
                 });
-
-                function showTabSwitcher() {
-                    var $tabSwitcher = $(Config.TAB_SWITCHER);
-
-                    // Some pages remove the tab switcher HTML by chance
-                    // so we check if the tab switcher was found and we re append if it is not found
-                    if ($tabSwitcher.length === 0) {
-                        appendTabSwitcherHtml(Config.TAB_SWITCHER_CONTAINER);
-                        $tabSwitcher = $(Config.TAB_SWITCHER);
-                    }
-
-                    $tabSwitcher.show();
-                }
 
                 // Master key binding for which extension will be enabled
                 key(Config.MASTER_KEY, function () {
