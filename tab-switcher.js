@@ -309,16 +309,16 @@
             populateTabs(matches);
         }
 
+        function appendTabSwitcherHtml($container) {
+            if (!($container instanceof jQuery)) {
+                $container = $($container);
+            }
+
+            $container.append(Config.MAIN_TEMPLATE);
+            return $container;
+        }
+
         return {
-
-            appendTabSwitcherHtml: function ($container) {
-                if (!($container instanceof jQuery)) {
-                    $container = $($container);
-                }
-
-                $container.append(Config.MAIN_TEMPLATE);
-                return $container;
-            },
 
             /**
              * Loads the extension in specified container
@@ -326,7 +326,7 @@
              * @param $container
              */
             loadExtension: function ($container) {
-                this.appendTabSwitcherHtml($container);
+                appendTabSwitcherHtml($container);
                 this.bindUI();
             },
 
@@ -334,8 +334,6 @@
              * Binds the UI elements for the extension
              */
             bindUI: function () {
-                var self = this;
-
                 // mouse-down instead of click because click gets triggered after the blur event in which case tab
                 // switcher would already be hidden (@see blur event below) and click will not be performed
                 $(document).on('mousedown', Config.TAB_ITEM, function () {
@@ -383,14 +381,13 @@
                     }
                 });
 
-
                 function showTabSwitcher() {
                     var $tabSwitcher = $(Config.TAB_SWITCHER);
 
                     // Some pages remove the tab switcher HTML by chance
                     // so we check if the tab switcher was found and we re append if it is not found
                     if ($tabSwitcher.length === 0) {
-                        self.appendTabSwitcherHtml(Config.TAB_SWITCHER_CONTAINER);
+                        appendTabSwitcherHtml(Config.TAB_SWITCHER_CONTAINER);
                         $tabSwitcher = $(Config.TAB_SWITCHER);
                     }
 
