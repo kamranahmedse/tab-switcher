@@ -32,6 +32,21 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
         },
 
         /**
+         * Toggle pinned state of the the currently selected browser tab
+         */
+        togglePin: function (params) {
+            chrome.tabs.get(params.tabId, function (tab) {
+                chrome.tabs.update(params.tabId, {pinned: !tab.pinned}, function () {
+                    chrome.windows.update(params.windowId, {focused: true});
+                    return true;
+                });
+                return true;
+            });
+
+            return true;
+        },
+
+        /**
          * Closes the tab with passed tabId
          *
          * @param params

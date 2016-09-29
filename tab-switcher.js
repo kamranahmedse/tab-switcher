@@ -22,17 +22,17 @@
 
         // Templates
         MAIN_TEMPLATE :'<div class="tab-switcher" style="display: none;">' +
-                            '<input type="text">' +
-                            '<ul class="tabs-list">' +
-                            '</ul>' +
-                        '</div>',
+        '<input type="text">' +
+        '<ul class="tabs-list">' +
+        '</ul>' +
+        '</div>',
 
         TAB_TEMPLATE  : '<li data-tab-id="{id}" data-window-id="{windowId}" class="tab-item">' +
-                            '<span class="favicon-img">' +
-                            '<img src="{favicon}" onerror="this.src=\'{default_favicon}\';">' +
-                            '</span>' +
-                            '<span class="title">{title}</span>' +
-                        '</li>',
+        '<span class="favicon-img">' +
+        '<img src="{favicon}" onerror="this.src=\'{default_favicon}\';">' +
+        '</span>' +
+        '<span class="title">{title}</span>' +
+        '</li>',
 
         // References to DOM elements
         SELECTED_CLASS: 'selected-tab',
@@ -52,13 +52,15 @@
         ESCAPE_KEY    : 27,
         ENTER_KEY     : 13,
         SEMICOLON_KEY : 186,
+        COMMA_KEY     : 188,
 
         // Actions
         GOING_UP      : 'going_up',
         GOING_DOWN    : 'going_down',
         ESCAPING      : 'escaping',
         SWITCHING     : 'switching',
-        CLOSING       : 'closing'
+        CLOSING       : 'closing',
+        PINNING       : 'pinning'
     };
 
     /**
@@ -101,6 +103,22 @@
         switch: function (tabId, windowId) {
             chrome.extension.sendMessage({
                 type: 'switchTab',
+                params: {
+                    tabId: tabId,
+                    windowId: windowId
+                }
+            }, function(res) {});
+        },
+
+        /**
+         * Toggles pin state to the specified tab
+         *
+         * @param tabId
+         * @param windowId
+         */
+        togglePin: function (tabId, windowId) {
+            chrome.extension.sendMessage({
+                type: 'togglePin',
                 params: {
                     tabId: tabId,
                     windowId: windowId
@@ -172,6 +190,8 @@
                     return Config.SWITCHING;
                 case Config.SEMICOLON_KEY:
                     return Config.CLOSING;
+                case Config.COMMA_KEY:
+                    return Config.PINNING;
                 default:
                     return false;
             }
@@ -231,6 +251,14 @@
         }
 
         /**
+         * Toggles pinned state of the tab currently focused
+         */
+        function togglePinTab() {
+            var $firstSelected = $(Config.TAB_SWITCHER).find(Config.TAB_SELECTED).first();
+            BrowserTab.togglePin($firstSelected.data('tabId'), $firstSelected.data('windowId'));
+        }
+
+        /**
          * Performs the action for the passed keypress event
          *
          * @param event
@@ -251,6 +279,10 @@
                     // Because we are using `;` to close so prevent entering
                     event.preventDefault();
                     closeSelectedTab();
+                    break;
+                case Config.PINNING:
+                    event.preventDefault();
+                    togglePinTab();
                     break;
                 case Config.SWITCHING:
                     switchSelectedTab();
@@ -366,6 +398,7 @@
                         case Config.ESCAPING:
                         case Config.SWITCHING:
                         case Config.CLOSING:
+                        case Config.PINNING:
                             return;
                         default:
                             var keyword = $(this).val();
