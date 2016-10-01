@@ -42,6 +42,7 @@
         TAB_LIST      : '.tab-switcher .tabs-list',
         TAB_ITEM      : '.tab-item',
         TAB_INPUT     : '.tab-switcher input[type="text"]',
+        TAB_SWITCHER_CONTAINER: 'body',
 
         // Shortcut for activation
         MASTER_KEY    : '⌘+⇧+k, ⌃+⇧+k',
@@ -340,6 +341,37 @@
             populateTabs(matches);
         }
 
+        /**
+         * Appends the tab switcher HTML to the $container
+         *
+         * @param $container
+         * @returns {*}
+         */
+        function appendTabSwitcherHtml($container) {
+            if (!($container instanceof jQuery)) {
+                $container = $($container);
+            }
+
+            $container.append(Config.MAIN_TEMPLATE);
+            return $container;
+        }
+
+        /**
+         * Gets the tab switcher element and makes it visible. If it cannot find the element creates it.
+         */
+        function showTabSwitcher() {
+            var $tabSwitcher = $(Config.TAB_SWITCHER);
+
+            // Some pages remove the tab switcher HTML by chance
+            // so we check if the tab switcher was found and we re append if it is not found
+            if ($tabSwitcher.length === 0) {
+                appendTabSwitcherHtml(Config.TAB_SWITCHER_CONTAINER);
+                $tabSwitcher = $(Config.TAB_SWITCHER);
+            }
+
+            $tabSwitcher.show();
+        }
+
         return {
 
             /**
@@ -348,12 +380,7 @@
              * @param $container
              */
             loadExtension: function ($container) {
-                if (!($container instanceof jQuery)) {
-                    $container = $($container);
-                }
-
-                $container.append(Config.MAIN_TEMPLATE);
-
+                appendTabSwitcherHtml($container);
                 this.bindUI();
             },
 
@@ -361,7 +388,6 @@
              * Binds the UI elements for the extension
              */
             bindUI: function () {
-
                 // mouse-down instead of click because click gets triggered after the blur event in which case tab
                 // switcher would already be hidden (@see blur event below) and click will not be performed
                 $(document).on('mousedown', Config.TAB_ITEM, function () {
@@ -412,7 +438,7 @@
 
                 // Master key binding for which extension will be enabled
                 key(Config.MASTER_KEY, function () {
-                    $(Config.TAB_SWITCHER).show();
+                    showTabSwitcher();
                     $(Config.TAB_INPUT).focus();
 
                     BrowserTab.getAll(populateTabs);
@@ -423,7 +449,7 @@
 
     $(document).ready(function () {
         var tabSwitcher = new TabSwitcher();
-        tabSwitcher.loadExtension('body');
+        tabSwitcher.loadExtension(Config.TAB_SWITCHER_CONTAINER);
     });
 
 }());
