@@ -306,7 +306,7 @@
 
                 tempTabTemplate = tempTabTemplate.replace('{favicon}', faviconUrl);
                 tempTabTemplate = tempTabTemplate.replace('{default_favicon}', Config.DEFAULT_FAVICON);
-                tempTabTemplate = tempTabTemplate.replace('{title}', tab.title);
+                tempTabTemplate = tempTabTemplate.replace('{title}', sanitizeHtml(tab.title));
                 tempTabTemplate = tempTabTemplate.replace('{id}', tab.id);
                 tempTabTemplate = tempTabTemplate.replace('{windowId}', tab.windowId);
 
